@@ -15,13 +15,21 @@ namespace GradeBook
         {
             grades.Add(grade);
         }
-        public void ShowStats()
+        
+        public Statistics ShowStats()
         {
-            System.Console.WriteLine($"The sum of all of the grades is {grades.Sum()}");
-            Console.WriteLine($"The maximum grade is {grades.Max()}");
-            System.Console.WriteLine($"The minimum grade is {grades.Min()}");
-            System.Console.WriteLine($"The average of all grades is {grades.Average()}");
-            
+            var result = new Statistics();
+            result.Average=0.0;
+            result.Low=double.MaxValue;
+            result.High= double.MinValue;
+            foreach(var grade in grades)
+            {
+                result.Low=Math.Min(grade, result.Low);
+                result.High=Math.Max(grade, result.High);
+                result.Average+=grade;
+            }
+            result.Average /=grades.Count;
+            return result;
         }
         private List <double> grades;
         private string name;
