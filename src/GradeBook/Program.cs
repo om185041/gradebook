@@ -13,7 +13,9 @@ namespace GradeBook
             book.AddGrade(89.1);
             book.AddGrade(90.5);
             book.AddGrade(77.5);
+            
            var stats = book.ShowStats();
+
            System.Console.WriteLine(stats.Low);
            System.Console.WriteLine(stats.High);
            System.Console.WriteLine(stats.Average);
