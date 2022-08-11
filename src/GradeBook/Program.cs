@@ -9,10 +9,14 @@ namespace GradeBook
     {
         static void Main(string[] args)
         {
-            //string keepgoing;
+            Book book = new Book("Scott's Grade Book");            
+            book.GradeAdded += OnGradeAdded;
+            book.GradeAdded += OnGradeAdded;
+            book.GradeAdded -= OnGradeAdded;
+            book.GradeAdded += OnGradeAdded;
+            
             string secondInput = " ";
             
-            Book book = new Book("Scott's Grade Book");
             bool done = false;
             while(!done)
             {
@@ -51,6 +55,11 @@ namespace GradeBook
            System.Console.WriteLine("The average grade is {0}" , stats.Average);
            System.Console.WriteLine("The letter grade is {0}" , stats.Letter);
             
+        }
+
+        static void OnGradeAdded(object sender, EventArgs e)
+        {
+            System.Console.WriteLine("A grade was added");
         }
     }
 
