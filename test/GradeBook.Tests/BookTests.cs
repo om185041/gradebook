@@ -44,9 +44,9 @@ namespace GradeBook.Tests
         {
             // arrange
             var book = new Book("");
-           book.AddLetterGrade('a');
-           book.AddLetterGrade('b');
-           book.AddLetterGrade('c');
+           book.AddGrade('a');
+           book.AddGrade('b');
+           book.AddGrade('c');
 
             // act
            var result = book.ShowStats();
