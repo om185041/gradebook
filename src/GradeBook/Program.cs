@@ -13,21 +13,34 @@ namespace GradeBook
             string secondInput = " ";
             
             Book book = new Book("Scott's Grade Book");
-            do
+            bool done = false;
+            while(!done)
             {
-                int input=0;
+                string input="";
+                double grade =0;
 
-                System.Console.WriteLine("Enter a number grade");
-                input = Convert.ToInt32(Console.ReadLine());
-                book.AddGrade(input);
+                System.Console.WriteLine("Enter a number grade or q to quit");
+                 input = Console.ReadLine();
+                if (input.ToLower() =="q")
+                {
+                    done = true;
+                    break;
+                }
 
-                Console.WriteLine("Would you like to quit? Press Q otherwise press any key then press enter");
-                secondInput = Console.ReadLine();
-                secondInput = secondInput.ToLower();
-                
-            } while (secondInput != "q");
-
-            
+                try
+                {
+                    grade = double.Parse(input);
+                    book.AddGrade(grade);
+                }
+                catch (ArgumentException ex)
+                {
+                    System.Console.WriteLine(ex.Message);
+                }
+                catch (FormatException ex)
+                {
+                    System.Console.WriteLine(ex.Message);
+                }
+            } 
             
            var stats = book.ShowStats();
 
